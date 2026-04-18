@@ -1,0 +1,9 @@
+{
+  "enabledMcpjsonServers": [
+    "context7",
+    "mcp-nixos",
+    "mcp-server-git",
+    "memory",
+    "sequential-thinking"
+  ]
+}

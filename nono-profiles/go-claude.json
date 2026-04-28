@@ -1,0 +1,18 @@
+{
+  "extends": "claude-code",
+  "meta": {
+    "name": "go-claude"
+  },
+  "security": {
+    "groups": [
+      "go_runtime"
+    ]
+  },
+  "workdir": {
+    "access": "readwrite"
+  },
+  "filesystem": {
+    "allow": [],
+    "read": []
+  }
+}

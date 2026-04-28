@@ -1,0 +1,58 @@
+{
+  "extends": "claude-code",
+  "meta": {
+    "name": "copilot",
+    "description": "GitHub Copilot CLI coding agent",
+    "author": "GitHub Copilot"
+  },
+  "workdir": {
+    "access": "readwrite"
+  },
+  "filesystem": {
+    "allow": [
+      "$HOME/.copilot",
+      "$XDG_CACHE_HOME/copilot",
+      "/dev/pts"
+    ],
+    "allow_file": [
+      "/dev/ptmx"
+    ],
+    "read": [
+      "$XDG_CONFIG_HOME/gh",
+      "$HOME/.config/gh",
+      "$XDG_CONFIG_HOME/github-copilot",
+      "$HOME/.config/github-copilot"
+    ]
+  },
+  "network": {
+    "allow_domain": [
+      "github.com",
+      "api.github.com",
+      "copilot-proxy.githubusercontent.com",
+      "api.githubcopilot.com",
+      "api.enterprise.githubcopilot.com",
+      "telemetry.githubcopilot.com",
+      "raw.githubusercontent.com",
+      "objects.githubusercontent.com",
+      "context7.com",
+      "mcp.context7.com",
+      "clerk.context7.com",
+      "search.nixos.org",
+      "nix-community.github.io",
+      "nix-darwin.github.io",
+      "api.flakehub.com",
+      "wiki.nixos.org",
+      "nix.dev",
+      "noogle.dev",
+      "search.devbox.sh",
+      "cache.nixos.org"
+    ]
+  },
+  "open_urls": {
+    "allow_origins": [
+      "https://github.com",
+      "https://github.com/login"
+    ],
+    "allow_localhost": true
+  }
+}

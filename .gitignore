@@ -1,0 +1,17 @@
+# Secrets
+.env
+
+# Compiled binaries
+aidir
+aiw
+
+# Go local caches (nono sandbox artifacts)
+.gocache/
+.gopath/
+
+# Tool state dirs
+.blip/
+.claude/
+
+# Eval outputs
+evals/

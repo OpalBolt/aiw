@@ -12,9 +12,9 @@ type Multiplexer interface {
 // New creates a multiplexer for the given backend
 func New(backend string) (Multiplexer, error) {
 	switch backend {
-	case "tmux":
+	case "tmux", "":
 		return &TmuxMux{}, nil
-	case "zellij", "":
+	case "zellij":
 		return &ZellijMux{}, nil
 	default:
 		return nil, fmt.Errorf("unknown multiplexer backend: %s", backend)

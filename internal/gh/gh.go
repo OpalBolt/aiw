@@ -12,9 +12,9 @@ import (
 
 // Issue represents a GitHub issue
 type Issue struct {
-	Number    int    `json:"number"`
-	Title     string `json:"title"`
-	Labels    []struct {
+	Number int    `json:"number"`
+	Title  string `json:"title"`
+	Labels []struct {
 		Name string `json:"name"`
 	} `json:"labels"`
 	Assignees []struct {

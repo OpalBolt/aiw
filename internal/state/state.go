@@ -10,16 +10,16 @@ import (
 
 // Session represents a single active session
 type Session struct {
-	IssueID      int       `json:"issue_id"`
-	IssueTitle   string    `json:"issue_title"`
-	Repo         string    `json:"repo"`
-	Branch       string    `json:"branch"`
-	Worktree     string    `json:"worktree"`
-	ZellijPaneID string    `json:"zellij_pane_id"`
-	AgentPID     int       `json:"agent_pid"`
-	AgentName    string    `json:"agent_name"`
-	Sandboxed    bool      `json:"sandboxed"`
-	CreatedAt    time.Time `json:"created_at"`
+	IssueID    int       `json:"issue_id"`
+	IssueTitle string    `json:"issue_title"`
+	Repo       string    `json:"repo"`
+	Branch     string    `json:"branch"`
+	Worktree   string    `json:"worktree"`
+	PaneID     string    `json:"pane_id"`
+	AgentPID   int       `json:"agent_pid"`
+	AgentName  string    `json:"agent_name"`
+	Sandboxed  bool      `json:"sandboxed"`
+	CreatedAt  time.Time `json:"created_at"`
 }
 
 // StateFile represents the state file

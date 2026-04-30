@@ -8,6 +8,7 @@ aiw
 # Go local caches (nono sandbox artifacts)
 .gocache/
 .gopath/
+.gomodcache/
 
 # Tool state dirs
 .blip/

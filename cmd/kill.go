@@ -7,6 +7,7 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/OpalBolt/aidir/internal/config"
 	"github.com/OpalBolt/aidir/internal/mux"
 	"github.com/OpalBolt/aidir/internal/state"
 	"github.com/OpalBolt/aidir/internal/worktree"
@@ -50,8 +51,14 @@ var killCmd = &cobra.Command{
 			sessionsToKill = append(sessionsToKill, sess)
 		}
 
+		// Load machine config
+		machineCfg, err := config.LoadMachineConfig()
+		if err != nil {
+			return fmt.Errorf("failed to load machine config: %w", err)
+		}
+
 		// Create multiplexer
-		m, err := mux.New("zellij")
+		m, err := mux.New(machineCfg.Mux.Backend)
 		if err != nil {
 			return fmt.Errorf("failed to create multiplexer: %w", err)
 		}
@@ -64,7 +71,7 @@ var killCmd = &cobra.Command{
 			}
 
 			// Close pane
-			_ = m.ClosePane(sess.ZellijPaneID)
+			_ = m.ClosePane(sess.PaneID)
 
 			// Remove worktree
 			_ = worktree.Remove(sess.Worktree)

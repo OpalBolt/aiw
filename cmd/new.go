@@ -62,7 +62,7 @@ var newCmd = &cobra.Command{
 		}
 
 		// Create multiplexer
-		m, err := mux.New("zellij")
+		m, err := mux.New(machineCfg.Mux.Backend)
 		if err != nil {
 			return fmt.Errorf("failed to create multiplexer: %w", err)
 		}
@@ -101,16 +101,16 @@ var newCmd = &cobra.Command{
 
 			// Add to state
 			sess := state.Session{
-				IssueID:      issue.Number,
-				IssueTitle:   issue.Title,
-				Repo:         repo,
-				Branch:       branchName,
-				Worktree:     worktreePath,
-				ZellijPaneID: paneID,
-				AgentPID:     0,
-				AgentName:    agentCfg.Name,
-				Sandboxed:    machineCfg.Sandbox.Backend == "nono" && agentCfg.Sandbox != "none",
-				CreatedAt:    time.Now(),
+				IssueID:    issue.Number,
+				IssueTitle: issue.Title,
+				Repo:       repo,
+				Branch:     branchName,
+				Worktree:   worktreePath,
+				PaneID:     paneID,
+				AgentPID:   0,
+				AgentName:  agentCfg.Name,
+				Sandboxed:  machineCfg.Sandbox.Backend == "nono" && agentCfg.Sandbox != "none",
+				CreatedAt:  time.Now(),
 			}
 			sf.Add(sess)
 

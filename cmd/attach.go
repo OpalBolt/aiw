@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"strconv"
 
+	"github.com/OpalBolt/aidir/internal/config"
 	"github.com/OpalBolt/aidir/internal/mux"
 	"github.com/OpalBolt/aidir/internal/state"
 	"github.com/spf13/cobra"
@@ -29,16 +30,20 @@ var attachCmd = &cobra.Command{
 			return fmt.Errorf("session #%d not found", issueID)
 		}
 
-		m, err := mux.New("zellij")
+		machineCfg, err := config.LoadMachineConfig()
+		if err != nil {
+			return fmt.Errorf("failed to load machine config: %w", err)
+		}
+
+		m, err := mux.New(machineCfg.Mux.Backend)
 		if err != nil {
 			return fmt.Errorf("failed to create multiplexer: %w", err)
 		}
 
-		if err := m.FocusPane(sess.ZellijPaneID); err != nil {
+		if err := m.FocusPane(sess.PaneID); err != nil {
 			return fmt.Errorf("failed to focus pane: %w", err)
 		}
 
-		fmt.Println("Warning: zellij pane focusing is best-effort")
 		return nil
 	},
 }
